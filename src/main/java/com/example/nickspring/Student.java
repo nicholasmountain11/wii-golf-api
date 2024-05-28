@@ -21,8 +21,5 @@ public class Student {
     @Column(name = "NAME")
     private String name;
 
-    @Column(name = "YEAR")
-    private String year;
-
 
 }
