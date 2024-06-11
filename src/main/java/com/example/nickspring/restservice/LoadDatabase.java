@@ -1,6 +1,14 @@
 package com.example.nickspring.restservice;
 
 
+import com.example.nickspring.restservice.entities.Employee;
+import com.example.nickspring.restservice.entities.Hole;
+import com.example.nickspring.restservice.entities.Player;
+import com.example.nickspring.restservice.entities.Round;
+import com.example.nickspring.restservice.repositories.EmployeeRepository;
+import com.example.nickspring.restservice.repositories.HoleRepository;
+import com.example.nickspring.restservice.repositories.PlayerRepository;
+import com.example.nickspring.restservice.repositories.RoundRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;

@@ -1,5 +1,6 @@
-package com.example.nickspring.restservice;
+package com.example.nickspring.restservice.exceptions;
 
+import com.example.nickspring.restservice.exceptions.EmployeeNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;

@@ -1,5 +1,12 @@
 package com.example.nickspring.restservice;
 
+import com.example.nickspring.restservice.entities.Hole;
+import com.example.nickspring.restservice.entities.Player;
+import com.example.nickspring.restservice.entities.Round;
+import com.example.nickspring.restservice.repositories.DataRepository;
+import com.example.nickspring.restservice.repositories.HoleRepository;
+import com.example.nickspring.restservice.repositories.PlayerRepository;
+import com.example.nickspring.restservice.repositories.RoundRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

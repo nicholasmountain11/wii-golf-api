@@ -1,8 +1,6 @@
-package com.example.nickspring.restservice;
+package com.example.nickspring.restservice.entities;
 
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 import jakarta.persistence.*;
 

@@ -1,4 +1,4 @@
-package com.example.nickspring.restservice;
+package com.example.nickspring.restservice.exceptions;
 
 public class EmployeeNotFoundException extends RuntimeException{
     EmployeeNotFoundException(Long id) {

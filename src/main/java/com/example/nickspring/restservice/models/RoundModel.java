@@ -1,4 +1,6 @@
-package com.example.nickspring.restservice;
+package com.example.nickspring.restservice.models;
+
+import com.example.nickspring.restservice.entities.Hole;
 
 import java.util.HashSet;
 import java.util.Set;

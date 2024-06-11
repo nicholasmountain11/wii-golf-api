@@ -1,4 +1,4 @@
-package com.example.nickspring.restservice;
+package com.example.nickspring.restservice.models;
 
 public class HoleModel {
 

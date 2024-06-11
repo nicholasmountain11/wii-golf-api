@@ -1,6 +1,8 @@
-package com.example.nickspring.restservice;
+package com.example.nickspring.restservice.repositories;
 
-import javax.xml.crypto.Data;
+import com.example.nickspring.restservice.repositories.HoleRepository;
+import com.example.nickspring.restservice.repositories.PlayerRepository;
+import com.example.nickspring.restservice.repositories.RoundRepository;
 
 public class DataRepository {
     public final RoundRepository roundRepository;

@@ -1,5 +1,10 @@
 package com.example.nickspring.restservice;
 
+import com.example.nickspring.restservice.entities.Hole;
+import com.example.nickspring.restservice.entities.Player;
+import com.example.nickspring.restservice.entities.Round;
+import com.example.nickspring.restservice.repositories.DataRepository;
+
 import java.util.List;
 
 public class GolfService {
