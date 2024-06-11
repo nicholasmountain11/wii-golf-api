@@ -14,9 +14,9 @@ public class Round {
     @Column(name = "round_id")
     Long round_id;
 
-//    @OneToMany(mappedBy = "round")
-//    @JsonManagedReference
-//    private Set<Hole> holes = new HashSet<>();
+    @OneToMany(mappedBy = "round")
+    @JsonManagedReference
+    private Set<Hole> holes = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "player_id")
@@ -34,7 +34,7 @@ public class Round {
         this.round_id = id;
     }
 
-//    public Set<Hole> getHoles() { return this.holes; }
+    public Set<Hole> getHoles() { return this.holes; }
 
     public Player getPlayer() { return this.player; }
 
