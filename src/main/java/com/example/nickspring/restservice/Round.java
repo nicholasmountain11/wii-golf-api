@@ -2,6 +2,7 @@ package com.example.nickspring.restservice;
 
 import java.util.*;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -9,12 +10,13 @@ import jakarta.persistence.*;
 public class Round {
 
     private @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     @Column(name = "round_id")
     Long round_id;
 
-    @OneToMany(mappedBy = "round")
-    private Set<Hole> holes = new HashSet<>();
+//    @OneToMany(mappedBy = "round")
+//    @JsonManagedReference
+//    private Set<Hole> holes = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "player_id")
@@ -32,7 +34,7 @@ public class Round {
         this.round_id = id;
     }
 
-    public Set<Hole> getHoles() { return this.holes; }
+//    public Set<Hole> getHoles() { return this.holes; }
 
     public Player getPlayer() { return this.player; }
 
@@ -44,18 +46,18 @@ public class Round {
         if (!(o instanceof Round))
             return false;
         Round round = (Round) o;
-        return Objects.equals(this.round_id, round.round_id) && Objects.equals(this.holes, round.holes)
+        return Objects.equals(this.round_id, round.round_id)
                 && Objects.equals(this.player, round.player);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.round_id, this.player, this.holes);
+        return Objects.hash(this.round_id, this.player);
     }
 
     @Override
     public String toString() {
-        return "Round{" + "round_id=" + this.round_id + ", holes='" + this.holes + '\'' + ", player='" + this.player + '\'' + '}';
+        return "Round{" + "round_id=" + this.round_id + '\'' + ", player='" + this.player + '\'' + '}';
     }
 
 }
