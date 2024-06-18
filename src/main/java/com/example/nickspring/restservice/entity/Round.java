@@ -1,8 +1,7 @@
-package com.example.nickspring.restservice;
+package com.example.nickspring.restservice.entity;
 
 import java.util.*;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 @Entity

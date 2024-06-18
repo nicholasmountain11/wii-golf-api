@@ -1,4 +1,4 @@
-package com.example.nickspring.restservice;
+package com.example.nickspring.restservice.entity;
 
 
 import java.util.Objects;

@@ -1,7 +1,10 @@
-package com.example.nickspring.restservice;
+package com.example.nickspring.restservice.controller;
 
 import java.util.List;
 
+import com.example.nickspring.restservice.entity.Employee;
+import com.example.nickspring.restservice.EmployeeNotFoundException;
+import com.example.nickspring.restservice.repository.EmployeeRepository;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

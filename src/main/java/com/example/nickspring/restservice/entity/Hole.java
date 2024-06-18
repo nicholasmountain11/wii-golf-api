@@ -1,10 +1,7 @@
-package com.example.nickspring.restservice;
+package com.example.nickspring.restservice.entity;
 
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
