@@ -15,6 +15,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Configuration
 public class LoadDatabase {
 
@@ -32,15 +35,29 @@ public class LoadDatabase {
 
             log.info("All entries deleted");
 
+            Hole hole1 = new Hole(3, 3, 1);
+            Hole hole2 = new Hole(4, 5, 2);
+            Hole hole3 = new Hole(3, 2, 1);
+
+            Round round1 = new Round();
+            Round round2 = new Round();
+
             Player nick = new Player("Nick Mountain");
-            Round round1 = new Round(nick);
-            Hole hole1 = new Hole(3, 3, 1, round1);
+            Player lebron = new Player("Lebron James");
+
+            round1.addHole(hole1);
+            round1.addHole(hole2);
+            round2.addHole(hole3);
+
+            nick.addRound(round1);
+            lebron.addRound(round2);
 
             log.info("Preloading " + repository.save(new Employee("Bilbo Baggins", "burglar")));
             log.info("Preloading " + repository.save(new Employee("Frodo Baggins", "thief")));
+
             log.info("Preloading " + playerRepository.save(nick));
-            log.info("Preloading " + roundRepository.save(round1));
-            log.info("Preloading " + holeRepository.save(hole1));
+            log.info("Preloading " + playerRepository.save(lebron));
+
         };
     }
 }

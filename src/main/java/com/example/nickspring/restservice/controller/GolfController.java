@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class GolfController {
     private final GolfService golfService;
 
@@ -20,28 +21,32 @@ public class GolfController {
         this.golfService = new GolfService(new DataRepository(roundRepository, playerRepository, holeRepository));
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/player")
     List<Player> allPlayers() { return golfService.getAllPlayers(); }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/player")
     Player newPlayer(@RequestBody Player player) { return golfService.newPlayer(player); }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/rounds")
     List<Round> all() { return golfService.getAllRounds(); }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/rounds")
     Round newRound(@RequestBody Round newRound) { return golfService.newRound(newRound); }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/hole")
     List<Hole> getHoles() { return golfService.getAllHoles(); }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/hole")
     Hole newHole(@RequestBody Hole newHole) {return golfService.newHole(newHole); }
+
+    @GetMapping("/getHolesByRound/{roundId}")
+    List<Hole> getHolesByRound(@PathVariable Long roundId) {
+        return golfService.getHolesByRound(roundId);
+    }
+
+    @GetMapping("/getRoundsByPlayer/{playerId}")
+    List<Round> getRoundsByPlayer(@PathVariable Long playerId) {
+        return golfService.getRoundsByPlayer(playerId);
+    }
 
 }

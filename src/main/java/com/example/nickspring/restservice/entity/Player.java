@@ -16,7 +16,7 @@ public class Player {
     private String name;
     private int rating;
 
-    @OneToMany(mappedBy = "player")
+    @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Round> rounds = new HashSet<>();
 
     public Player() {}
@@ -29,6 +29,14 @@ public class Player {
     public Player(String name, int rating) {
         this.name = name;
         this.rating = rating;
+    }
+
+    public Set<Round> getRounds() {
+        return rounds;
+    }
+
+    public void setRounds(Set<Round> rounds) {
+        this.rounds = rounds;
     }
 
     public Long getId() { return this.player_id; }
@@ -51,6 +59,11 @@ public class Player {
 
     public void addToRating(int increase) {
         this.rating = this.rating + increase;
+    }
+
+    public void addRound(Round round) {
+        this.rounds.add(round);
+        round.setPlayer(this);
     }
 
     @Override

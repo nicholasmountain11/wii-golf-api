@@ -13,19 +13,20 @@ public class Round {
     @Column(name = "round_id")
     Long round_id;
 
-//    @OneToMany(mappedBy = "round")
-//    @JsonManagedReference
-//    private Set<Hole> holes = new HashSet<>();
+    @OneToMany(mappedBy = "round", cascade = CascadeType.ALL)
+    private Set<Hole> holes = new HashSet<>();
+
 
     @ManyToOne
     @JoinColumn(name = "player_id")
     private Player player;
 
-    public Round(Player player) {
-        this.player = player;
-    }
 
     public Round() {}
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
 
     public Long getId() { return this.round_id; }
 
@@ -33,30 +34,17 @@ public class Round {
         this.round_id = id;
     }
 
-//    public Set<Hole> getHoles() { return this.holes; }
-
-    public Player getPlayer() { return this.player; }
-
-    @Override
-    public boolean equals(Object o) {
-
-        if (this == o)
-            return true;
-        if (!(o instanceof Round))
-            return false;
-        Round round = (Round) o;
-        return Objects.equals(this.round_id, round.round_id)
-                && Objects.equals(this.player, round.player);
+    public Set<Hole> getHoles() {
+        return holes;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.round_id, this.player);
+    public void setHoles(Set<Hole> holes) {
+        this.holes = holes;
     }
 
-    @Override
-    public String toString() {
-        return "Round{" + "round_id=" + this.round_id + '\'' + ", player='" + this.player + '\'' + '}';
+    public void addHole(Hole hole) {
+        this.holes.add(hole);
+        hole.setRound(this);
     }
 
 }
