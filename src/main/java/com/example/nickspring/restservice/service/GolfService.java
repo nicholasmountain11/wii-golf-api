@@ -4,6 +4,7 @@ import com.example.nickspring.restservice.entity.Hole;
 import com.example.nickspring.restservice.entity.Player;
 import com.example.nickspring.restservice.entity.Round;
 import com.example.nickspring.restservice.repository.DataRepository;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
@@ -47,5 +48,10 @@ public class GolfService {
         player.addRound(round);
         data.playerRepository.save(player);
         return round;
+    }
+
+
+    public List<Round> getLowestScoringRounds(int roundAmount) {
+        return data.roundRepository.findRoundsWithLowestScores(PageRequest.of(0, roundAmount));
     }
 }

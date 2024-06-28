@@ -61,9 +61,14 @@ public class GolfController {
         return golfService.getRoundsByPlayer(playerId);
     }
 
-    @PostMapping("addRoundByPlayer/{playerId}")
+    @PostMapping("/addRoundByPlayer/{playerId}")
     Round addRoundByPlayer(@PathVariable Long playerId, @RequestBody Set<Hole> newRound) {
         return golfService.addRoundByPlayer(newRound, playerId);
+    }
+
+    @GetMapping("/getLowestScoringRounds/{roundAmount}")
+    List<Round> getLowestScoringRounds(@PathVariable int roundAmount) {
+        return golfService.getLowestScoringRounds(roundAmount);
     }
 
 }
