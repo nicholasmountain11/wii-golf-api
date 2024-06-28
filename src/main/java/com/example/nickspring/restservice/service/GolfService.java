@@ -7,6 +7,7 @@ import com.example.nickspring.restservice.repository.DataRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Set;
 
 public class GolfService {
     private final DataRepository data;
@@ -35,5 +36,16 @@ public class GolfService {
     public List<Round> getRoundsByPlayer(Long playerId) {
         Player player = data.playerRepository.findById(playerId).orElseThrow(() -> new RuntimeException("Player not found"));
         return data.roundRepository.findByPlayer(player);
+    }
+
+    public Round addRoundByPlayer(Set<Hole> holes, Long playerId) {
+        Player player = data.playerRepository.findById(playerId).orElseThrow(() -> new RuntimeException("Player not found"));
+        Round round = new Round();
+        for (Hole hole : holes) {
+            round.addHole(hole);
+        }
+        player.addRound(round);
+        data.playerRepository.save(player);
+        return round;
     }
 }

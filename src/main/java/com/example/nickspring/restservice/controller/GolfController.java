@@ -11,6 +11,7 @@ import com.example.nickspring.restservice.service.GolfService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -25,28 +26,44 @@ public class GolfController {
     List<Player> allPlayers() { return golfService.getAllPlayers(); }
 
     @PostMapping("/player")
-    Player newPlayer(@RequestBody Player player) { return golfService.newPlayer(player); }
+    Player newPlayer(@RequestBody Player player) {
+        System.out.println("route called");
+        return golfService.newPlayer(player);
+    }
 
     @GetMapping("/rounds")
     List<Round> all() { return golfService.getAllRounds(); }
 
     @PostMapping("/rounds")
-    Round newRound(@RequestBody Round newRound) { return golfService.newRound(newRound); }
+    Round newRound(@RequestBody Round newRound) {
+        return golfService.newRound(newRound);
+    }
 
     @GetMapping("/hole")
-    List<Hole> getHoles() { return golfService.getAllHoles(); }
+    List<Hole> getHoles() {
+        return golfService.getAllHoles();
+    }
 
     @PostMapping("/hole")
-    Hole newHole(@RequestBody Hole newHole) {return golfService.newHole(newHole); }
+    Hole newHole(@RequestBody Hole newHole) {
+        return golfService.newHole(newHole);
+    }
 
     @GetMapping("/getHolesByRound/{roundId}")
     List<Hole> getHolesByRound(@PathVariable Long roundId) {
+
         return golfService.getHolesByRound(roundId);
     }
 
     @GetMapping("/getRoundsByPlayer/{playerId}")
     List<Round> getRoundsByPlayer(@PathVariable Long playerId) {
+
         return golfService.getRoundsByPlayer(playerId);
+    }
+
+    @PostMapping("addRoundByPlayer/{playerId}")
+    Round addRoundByPlayer(@PathVariable Long playerId, @RequestBody Set<Hole> newRound) {
+        return golfService.addRoundByPlayer(newRound, playerId);
     }
 
 }
