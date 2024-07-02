@@ -3,10 +3,12 @@ package com.example.nickspring.restservice.service;
 import com.example.nickspring.restservice.entity.Hole;
 import com.example.nickspring.restservice.entity.Player;
 import com.example.nickspring.restservice.entity.Round;
+import com.example.nickspring.restservice.model.TopRoundReturnModel;
 import com.example.nickspring.restservice.repository.DataRepository;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -51,7 +53,15 @@ public class GolfService {
     }
 
 
-    public List<Round> getLowestScoringRounds(int roundAmount) {
-        return data.roundRepository.findRoundsWithLowestScores(PageRequest.of(0, roundAmount));
+    public List<TopRoundReturnModel> getLowestScoringRounds(int roundAmount) {
+        List<Round> roundList = data.roundRepository.findRoundsWithLowestScores(PageRequest.of(0, roundAmount));
+        List<TopRoundReturnModel> returnModels = new ArrayList<>();
+        for (Round round : roundList) {
+            Player player = data.roundRepository.findPlayerByRoundId(round.getId());
+            returnModels.add(new TopRoundReturnModel(round, player.getName()));
+        }
+
+        return returnModels;
+
     }
 }

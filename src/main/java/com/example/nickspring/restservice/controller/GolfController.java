@@ -3,6 +3,7 @@ package com.example.nickspring.restservice.controller;
 import com.example.nickspring.restservice.entity.Hole;
 import com.example.nickspring.restservice.entity.Player;
 import com.example.nickspring.restservice.entity.Round;
+import com.example.nickspring.restservice.model.TopRoundReturnModel;
 import com.example.nickspring.restservice.repository.DataRepository;
 import com.example.nickspring.restservice.repository.HoleRepository;
 import com.example.nickspring.restservice.repository.PlayerRepository;
@@ -67,7 +68,7 @@ public class GolfController {
     }
 
     @GetMapping("/getLowestScoringRounds/{roundAmount}")
-    List<Round> getLowestScoringRounds(@PathVariable int roundAmount) {
+    List<TopRoundReturnModel> getLowestScoringRounds(@PathVariable int roundAmount) {
         return golfService.getLowestScoringRounds(roundAmount);
     }
 

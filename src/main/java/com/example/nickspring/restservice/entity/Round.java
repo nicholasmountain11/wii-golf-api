@@ -19,8 +19,7 @@ public class Round {
 
     @ManyToOne
     @JoinColumn(name = "player_id")
-    private Player player;
-
+    protected Player player;
 
     public Round() {}
 
