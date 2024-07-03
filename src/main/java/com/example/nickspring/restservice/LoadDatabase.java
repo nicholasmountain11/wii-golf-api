@@ -1,11 +1,9 @@
 package com.example.nickspring.restservice;
 
 
-import com.example.nickspring.restservice.entity.Employee;
 import com.example.nickspring.restservice.entity.Hole;
 import com.example.nickspring.restservice.entity.Player;
 import com.example.nickspring.restservice.entity.Round;
-import com.example.nickspring.restservice.repository.EmployeeRepository;
 import com.example.nickspring.restservice.repository.HoleRepository;
 import com.example.nickspring.restservice.repository.PlayerRepository;
 import com.example.nickspring.restservice.repository.RoundRepository;
@@ -15,19 +13,15 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @Configuration
 public class LoadDatabase {
 
     private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
 
     @Bean
-    CommandLineRunner initDatabase(EmployeeRepository repository, PlayerRepository playerRepository, RoundRepository roundRepository, HoleRepository holeRepository) {
+    CommandLineRunner initDatabase(PlayerRepository playerRepository, RoundRepository roundRepository, HoleRepository holeRepository) {
 
         return args -> {
-            repository.deleteAll();
             holeRepository.deleteAll();
             roundRepository.deleteAll();
             playerRepository.deleteAll();
@@ -82,9 +76,6 @@ public class LoadDatabase {
 
             nick.addRound(round1);
             lebron.addRound(round2);
-
-            log.info("Preloading " + repository.save(new Employee("Bilbo Baggins", "burglar")));
-            log.info("Preloading " + repository.save(new Employee("Frodo Baggins", "thief")));
 
             log.info("Preloading " + playerRepository.save(nick));
             log.info("Preloading " + playerRepository.save(lebron));
